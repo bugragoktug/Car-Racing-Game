@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 public class carController : MonoBehaviour
 {
-	bool currentPlatformAndroid = false;
+	bool currentPlatformPhone = false;
 	public enemyDestroyer enemyDestroyer;
 	public float carSpeed;
 	Vector2 position;
 	public float maxPos = 2.4f;
 	private void Awake()
 	{
-#if UNITY_ANDROID
-		currentPlatformAndroid = true;
+#if UNITY_ANDROID || UNITY_IOS
+		currentPlatformPhone = true;
 #else
-		currentPlatformAndroid = false;
+		currentPlatformPhone = false;
 #endif
 	}
+	public GameObject backGround;
 	void Start()
 	{
 		position = transform.position;
-		if (currentPlatformAndroid == true)
+		if (currentPlatformPhone == true)
 		{
-
+			backGround.SetActive(false);
+		}
+		else
+		{
+			backGround.SetActive(true);
 		}
 	}
 	public GameObject car;
@@ -51,7 +56,6 @@ public class carController : MonoBehaviour
 	}
 	void Update()
 	{
-		//position.x += Input.GetAxis("Horizontal") * carSpeed * Time.deltaTime;
 		position.x = Mathf.Clamp(position.x, -2.4f, 2.4f);
 		transform.position = position;
 		movement();
@@ -69,21 +73,17 @@ public class carController : MonoBehaviour
 	private bool left = false;
 	public void goright()
 	{
-		//position.x += ButtonSpeed * carSpeed * Time.deltaTime;
 		right = true;
 		left = false;
-		//car.transform.rotation = Quaternion.Euler(0, 0, 15);
 	}
 	public void goleft()
 	{
-		//position.x -= ButtonSpeed * carSpeed * Time.deltaTime;
 		right = false;
 		left = true;
-		//car.transform.rotation = Quaternion.Euler(0, 0, -15);
 	}
 	public void gitme()
 	{
 		right = false;
 		left = false;
-}
+	}
 }

@@ -279,13 +279,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 219180050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6754f09a17206d941b232389add38dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cd6fe4a388daeb469d6c5cf42d083e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2114891772}
-  maxSize: 150
-  minSize: 60
-  speed: 3.5
+  maxSize: 140
+  minSize: 65
+  speed: 4
 --- !u!1 &590061404
 GameObject:
   m_ObjectHideFlags: 0

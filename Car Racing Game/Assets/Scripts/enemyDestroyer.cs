@@ -10,13 +10,11 @@ public class enemyDestroyer : MonoBehaviour
 	public Button[] but2;
 	bool gameOver;
 	public Text scoreText, highscoretext; 
-	
 	int score;
 	private void Start()
 	{
 		gameOver = false;
 		highscoretext.text = "High Score: " + PlayerPrefs.GetInt("score").ToString();
-
 	}
 	private void Update()
 	{
@@ -31,11 +29,8 @@ public class enemyDestroyer : MonoBehaviour
 			{
 				score++;
 			}
-			
-
 		}
 	}
-	
 	public void IsGameOver()
 	{
 		if (PlayerPrefs.GetInt("score") < score)
@@ -52,7 +47,6 @@ public class enemyDestroyer : MonoBehaviour
 		{
 			button.gameObject.SetActive(false);
 		}
-
 		Time.timeScale = 0;
 	}
 }

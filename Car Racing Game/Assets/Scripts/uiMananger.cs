@@ -7,34 +7,25 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 public class uiMananger : MonoBehaviour
 {
-    //float score;
-    //public Text scoreText;
-    
     void Start()
     {
-		//score = 0;
 		int width = 900; // Genişliği belirle
 		int height = 1600; // Genişlik ile orantılı yüksekliği hesapla (9:16)
 		bool isFullScreen = false; // Tam ekran modu kapalı
-
-		// Oyun başladığında belirtilen çözünürlüğü ayarla
-		Screen.SetResolution(width, height, isFullScreen);
+		Screen.SetResolution(width, height, isFullScreen);// Oyun başladığında belirtilen çözünürlüğü ayarla
 	}
-    void Update()
-    {
-        //scoreText.text = "Score:" + score;
-
-    }
     public void Pause()
     {
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
-        }
+			AudioListener.pause = true; ;
+		}
         else if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
-        }
+			AudioListener.pause = false;
+		}
     }
     public void Play()
     {
@@ -67,9 +58,5 @@ public class uiMananger : MonoBehaviour
 			AudioListener.pause = false;
 			isMuted = false ;
 		}
-
 	}
-
-
-
 }

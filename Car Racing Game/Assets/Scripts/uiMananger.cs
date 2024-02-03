@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +12,14 @@ public class uiMananger : MonoBehaviour
     
     void Start()
     {
-        //score = 0;
-    }
+		//score = 0;
+		int width = 900; // Genişliği belirle
+		int height = 1600; // Genişlik ile orantılı yüksekliği hesapla (9:16)
+		bool isFullScreen = false; // Tam ekran modu kapalı
+
+		// Oyun başladığında belirtilen çözünürlüğü ayarla
+		Screen.SetResolution(width, height, isFullScreen);
+	}
     void Update()
     {
         //scoreText.text = "Score:" + score;
@@ -32,7 +38,7 @@ public class uiMananger : MonoBehaviour
     }
     public void Play()
     {
-        Application.LoadLevel("SampleScene");
+        Application.LoadLevel("audi");
     }
     public void Quit()
     {

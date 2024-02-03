@@ -24,24 +24,37 @@ public class carController : MonoBehaviour
 
 		}
 	}
-	void Update()
+	public GameObject car;
+	public float turnSpeed = 100f;
+	private float targetZRotation = 0f;
+	public void movement()
 	{
-		position.x += Input.GetAxis("Horizontal") * carSpeed * Time.deltaTime;
-		position.x = Mathf.Clamp(position.x, -2.4f, 2.4f);
-		transform.position = position;
 		if (right == false && left == true)
 		{
 			position.x += ButtonSpeed * carSpeed * Time.deltaTime;
+			car.transform.rotation = Quaternion.Euler(0, 0, -15);
+			targetZRotation = -25f;
 		}
 		else if (right == true && left == false)
 		{
 			position.x -= ButtonSpeed * carSpeed * Time.deltaTime;
+			targetZRotation = 25f;
 		}
 		else
 		{
 			right = false;
 			left = false;
-}
+			targetZRotation = 0f;
+		}
+		float zRotation = Mathf.MoveTowardsAngle(car.transform.eulerAngles.z, targetZRotation, turnSpeed * Time.deltaTime * 3f);
+		car.transform.rotation = Quaternion.Euler(0, 0, zRotation);
+	}
+	void Update()
+	{
+		//position.x += Input.GetAxis("Horizontal") * carSpeed * Time.deltaTime;
+		position.x = Mathf.Clamp(position.x, -2.4f, 2.4f);
+		transform.position = position;
+		movement();
 	}
 	private void OnCollisionEnter2D(Collision2D col)
 	{
@@ -59,12 +72,14 @@ public class carController : MonoBehaviour
 		//position.x += ButtonSpeed * carSpeed * Time.deltaTime;
 		right = true;
 		left = false;
-}
+		//car.transform.rotation = Quaternion.Euler(0, 0, 15);
+	}
 	public void goleft()
 	{
 		//position.x -= ButtonSpeed * carSpeed * Time.deltaTime;
 		right = false;
 		left = true;
+		//car.transform.rotation = Quaternion.Euler(0, 0, -15);
 	}
 	public void gitme()
 	{

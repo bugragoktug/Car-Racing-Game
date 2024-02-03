@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.U2D;
 public class enemyDestroyer : MonoBehaviour
 {
 	public Button[] buttons;
@@ -34,6 +35,7 @@ public class enemyDestroyer : MonoBehaviour
 
 		}
 	}
+	
 	public void IsGameOver()
 	{
 		if (PlayerPrefs.GetInt("score") < score)
